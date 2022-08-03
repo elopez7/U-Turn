@@ -23,7 +23,7 @@
     <!-- ==== Nav Section ==== -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/logo/logo.png" class="d-inline-block align-text-top"
+            <a class="navbar-brand" href="/index.html"><img src="/img/logo/logo.png" class="d-inline-block align-text-top"
                     alt="Esteban Lopez Logo" width="32" height="32"> U-TURN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,23 +58,59 @@
             <div class="row row-cols-1 row-cols-md-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
-                        <code class="language-cpp">
-                            #include <iostream>
-                            #include <string>
+                        <code class="language-js">
+                            document.getElementById("btnSubmit").addEventListener("click", getStringFromPage);
 
-                            int main()
-                            {
-                                std::string message = "Hello World\n";
-                                std::cout << message;
-                                return 0;
+                            function getStringFromPage(){
+                                document.getElementById("alert").classList.add("invisible");
+                            
+                                let inputString = document.getElementById("userString").value;
+                                let reversedString = reverseString(inputString);
+                                displayReversedString(reversedString);
+                            }
+
+                            function reverseString(stringToReverse){
+                                let reversedString = [];
+                            
+                                for(index = (stringToReverse.length - 1); index >= 0; index--){
+                                    reversedString += stringToReverse[index];
+                                }
+                            
+                                return reversedString.toString();
+                            }
+
+                            function displayReversedString(stringToDisplay){
+                            
+                                document.getElementById("msg").innerHTML = `Your U-Turned string is: ${stringToDisplay}`;
+                                document.getElementById("alert").classList.remove("invisible");
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a C++ function that prints "Hello World" to the console.</p>
+                    <p>The Code is structured in an even listener and three functions.</p>
+                    <h5>First Line</h5>
+                    <p>The first line wires up our submit button to a click event listener that calls
+                        <strong>getStringFromPage()</strong>.
+                    </p>
+
+                    <h5>getStringFromPage()</h5>
+                    <p>Ensures that our output section in the page is initially invisible, then takes the user input and
+                        passes it to <strong>reverseString()</strong>, the reversed string will be assigned to the
+                        <strong>reversedString</strong> variable which is then passed to
+                        <strong>displayReversedString()</strong> to display the results to the screen.</strong>.
+                    </p>
+                    <h5>reverseString()</h5>
+                    <p>
+                        Takes the input string as a parameter, then using a for loop the <strong>reversedString</strong>
+                        list is assigned the characters of <strong>stringToReverse</strong> from last to first, thus
+                        creating a reversed string which is then returned by the function.
+                    </p>
+                    <h5>displayReversedString()</h5>
+                    <p>
+                        Takes the results from <strong>reverseString()</strong> displays it to the user by making the
+                        output area visible.
+                    </p>
                 </div>
             </div>
         </div>
